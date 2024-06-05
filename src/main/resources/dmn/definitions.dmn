@@ -4,6 +4,7 @@
              name="definitions"
              namespace="http://camunda.org/schema/1.0/dmn">
 
+
   <decision id="decision" name="decision">
 
     <decisionTable id="decisionTable" hitPolicy="FIRST">
