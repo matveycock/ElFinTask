@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn11.xsd"
+             id="definitions"
+             name="definitions"
+             namespace="http://camunda.org/schema/1.0/dmn">
+
+  <decision id="decision" name="decision">
+
+    <decisionTable id="decisionTable" hitPolicy="FIRST">
+
+      <input id="input1" label="INN">
+        <inputExpression id="inputExpression1" typeRef="double">
+            <text>INN</text>
+        </inputExpression>
+      </input>
+
+      <input id="input2" label="Region">
+        <inputExpression id="inputExpression2" typeRef="double">
+            <text>region</text>
+        </inputExpression>
+      </input>
+
+      <input id="input3" label="Capital">
+        <inputExpression id="inputExpression3" typeRef="double">
+            text>capital</text>
+        </inputExpression>
+      </input>
+
+      <output id="output1" label="Assessment Result" name="result" typeRef="string"/>
+
+      <rule id="rule1">
+        <inputEntry id="inputEntry1">
+            <text>-</text>
+        </inputEntry>
+
+        <inputEntry id="inputEntry2">
+            <text>region = "24"</text>
+        </inputEntry>
+
+        <inputEntry id="inputEntry3">
+            <text>-</text>
+        </inputEntry>
+
+        <outputEntry id="outputEntry1">
+            <text>"Region is 24"</text>
+        </outputEntry>
+      </rule>
+
+      <rule id="rule2">
+        <inputEntry id="inputEntry1">
+            <text>-</text>
+        </inputEntry>
+
+        <inputEntry id="inputEntry2">
+            <text>region = "24"</text>
+        </inputEntry>
+
+        <inputEntry id="inputEntry3">
+            <text>-</text>
+        </inputEntry>
+
+        <outputEntry id="outputEntry1">
+            <text>"Region is 24"</text>
+        </outputEntry>
+      </rule>
+
+      <rule id="rule3">
+        <inputEntry id="inputEntry1">
+            <text>-</text>
+        </inputEntry>
+
+        <inputEntry id="inputEntry2">
+            <text>-</text>
+        </inputEntry>
+
+        <inputEntry id="inputEntry3">
+            <text>capital &lt; 5000000</text>
+        </inputEntry>
+
+        <outputEntry id="outputEntry1">
+            <text>"Capital is less than 5000000"</text>
+        </outputEntry>
+      </rule>
+
+
+      <rule id="rule4">
+        <inputEntry id="inputEntry1">
+            <text>startsWith(residency, "9909")</text>
+        </inputEntry>
+
+        <inputEntry id="inputEntry2">
+            <text>-</text>
+        </inputEntry>
+
+        <inputEntry id="inputEntry3">
+            <text>-</text>
+        </inputEntry>
+
+        <outputEntry id="outputEntry1">
+            <text>"Residency starts with 9909"</text>
+        </outputEntry>
+      </rule>
+
+    </decisionTable>
+  </decision>
+</definitions>
