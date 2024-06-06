@@ -1,6 +1,5 @@
 package ru.matveycock.ElFinTask.config;
 
-import lombok.AllArgsConstructor;
 import org.camunda.bpm.dmn.engine.DmnEngine;
 import org.camunda.bpm.dmn.engine.DmnEngineConfiguration;
 import org.camunda.bpm.dmn.engine.DmnDecision;
@@ -17,7 +16,6 @@ import java.io.InputStream;
 @Configuration
 public class DmnConfiguration {
 
-    private Resource resource;
     private ResourceLoader resourceLoader;
     private DmnEngine dmnEngine;
 
@@ -44,7 +42,6 @@ public class DmnConfiguration {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        DmnDecision dec = dmnEngine.parseDecision("decision", is);
-        return dmnEngine.parseDecision("decision", is);
+        return dmnEngine.parseDecision("clientAssessment", is);
     }
 }

@@ -13,7 +13,9 @@ import ru.matveycock.ElFinTask.model.Client;
 import ru.matveycock.ElFinTask.model.Result;
 import ru.matveycock.ElFinTask.service.AssessmentService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -23,7 +25,6 @@ public class AssessmentServiceImpl implements AssessmentService {
     private DmnEngine dmnEngine;
     @Autowired
     private DmnDecision decision;
-
     @Override
     public Result assessClient(Client client) {
         VariableMap variables = Variables.createVariables()
@@ -33,13 +34,13 @@ public class AssessmentServiceImpl implements AssessmentService {
 
         DmnDecisionTableResult decisionResult = dmnEngine.evaluateDecisionTable(decision, variables);
 
-        Map<String, String> details = new HashMap<>();
+        List<String> details = new ArrayList<>();
         boolean successful = true;
 
         for (DmnDecisionRuleResult result : decisionResult) {
             String output = result.getSingleEntry();
             if (output != null) {
-                details.put(output, output);
+                details.add(output);
                 successful = false;
             }
         }

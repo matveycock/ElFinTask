@@ -1,102 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn11.xsd" id="definitions" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
-  <decision id="decision" name="decision">
-    <decisionTable id="decisionTable" hitPolicy="FIRST">
+<definitions
+	xmlns="http://www.omg.org/spec/DMN/20151101/dmn11.xsd" id="definitions" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+	<decision id="clientAssessment" name="Client Assessment">
+		<decisionTable id="decisionTable" hitPolicy="COLLECT">
+			<input id="input1" label="INN">
+				<inputExpression id="inputExpression1" typeRef="double">
+					<text>inn</text>
+				</inputExpression>
+			</input>
+			<input id="input2" label="region">
+				<inputExpression id="inputExpression2" typeRef="double">
+					<text>region</text>
+				</inputExpression>
+			</input>
+			<input id="input3" label="capital">
+				<inputExpression id="inputExpression3" typeRef="double">
+					<text>capital</text>
+				</inputExpression>
+			</input>
+			<output id="output1" label="Assessment Result" name="result" typeRef="string" />
 
-      <input id="input1" label="INN">
-        <inputExpression id="inputExpression1" typeRef="double">
-            <text>INN</text>
-        </inputExpression>
-      </input>
-
-      <input id="input2" label="Region">
-        <inputExpression id="inputExpression2" typeRef="double">
-            <text>region</text>
-        </inputExpression>
-      </input>
-
-      <input id="input3" label="Capital">
-        <inputExpression id="inputExpression3" typeRef="double">
-            <text>capital</text>
-        </inputExpression>
-      </input>
-
-      <output id="output1" label="Assessment Result" name="result" typeRef="string"/>
-
-      <rule id="rule1">
-        <inputEntry id="inputEntry1">
-            <text>-</text>
-        </inputEntry>
-
-        <inputEntry id="inputEntry2">
-            <text>region = "24"</text>
-        </inputEntry>
-
-        <inputEntry id="inputEntry3">
-            <text>-</text>
-        </inputEntry>
-
-        <outputEntry id="outputEntry1">
-            <text>"Region is 24"</text>
-        </outputEntry>
-      </rule>
-
-      <rule id="rule2">
-        <inputEntry id="inputEntry1">
-            <text>-</text>
-        </inputEntry>
-
-        <inputEntry id="inputEntry2">
-            <text>region = "24"</text>
-        </inputEntry>
-
-        <inputEntry id="inputEntry3">
-            <text>-</text>
-        </inputEntry>
-
-        <outputEntry id="outputEntry1">
-            <text>"Region is 24"</text>
-        </outputEntry>
-      </rule>
-
-      <rule id="rule3">
-        <inputEntry id="inputEntry1">
-            <text>-</text>
-        </inputEntry>
-
-        <inputEntry id="inputEntry2">
-            <text>-</text>
-        </inputEntry>
-
-        <inputEntry id="inputEntry3">
-            <text>capital &lt; 5000000</text>
-        </inputEntry>
-
-        <outputEntry id="outputEntry1">
-            <text>"Capital is less than 5000000"</text>
-        </outputEntry>
-      </rule>
-
-
-      <rule id="rule4">
-        <inputEntry id="inputEntry1">
-            <text>startsWith(residency, "9909")</text>
-        </inputEntry>
-
-        <inputEntry id="inputEntry2">
-            <text>-</text>
-        </inputEntry>
-
-        <inputEntry id="inputEntry3">
-            <text>-</text>
-        </inputEntry>
-
-        <outputEntry id="outputEntry1">
-            <text>"Residency starts with 9909"</text>
-        </outputEntry>
-      </rule>
-
-    </decisionTable>
-  </decision>
-
+            <rule id="rule1">
+				<inputEntry id="inputEntry11">
+					<text>not([100000000000..999999999999])</text>
+				</inputEntry>
+				<inputEntry id="inputEntry21">
+					<text></text>
+				</inputEntry>
+				<inputEntry id="inputEntry31">
+					<text></text>
+				</inputEntry>
+				<outputEntry id="outputEntry11">
+					<text>"INN not contains 12 digits"</text>
+				</outputEntry>
+			</rule>
+			<rule id="rule2">
+                <inputEntry id="inputEntry12">
+                	<text></text>
+                </inputEntry>
+                <inputEntry id="inputEntry22">
+                	<text>24</text>
+                </inputEntry>
+                <inputEntry id="inputEntry32">
+                	<text></text>
+                </inputEntry>
+                <outputEntry id="outputEntry12">
+                	<text>"Region is 24"</text>
+                </outputEntry>
+            </rule>
+            <rule id="rule3">
+                <inputEntry id="inputEntry13">
+                	<text></text>
+                </inputEntry>
+                <inputEntry id="inputEntry23">
+                	<text></text>
+                </inputEntry>
+                <inputEntry id="inputEntry33">
+                	<text>&lt; 5000000</text>
+                </inputEntry>
+                <outputEntry id="outputEntry13">
+                	<text>"Capital is less than 5,000,000"</text>
+                </outputEntry>
+            </rule>
+            <rule id="rule4">
+                <inputEntry id="inputEntry14">
+                	<text>[990900000000..990999999999]</text>
+                </inputEntry>
+                <inputEntry id="inputEntry24">
+                	<text></text>
+                </inputEntry>
+                <inputEntry id="inputEntry34">
+                	<text></text>
+                </inputEntry>
+                <outputEntry id="outputEntry14">
+                	<text>"Residency starts with 9909"</text>
+                </outputEntry>
+            </rule>
+		</decisionTable>
+	</decision>
 </definitions>
